@@ -1,24 +1,56 @@
 <template>
-  <div @click="_href">
-    hello world
+  <div>
+    <list v-model="loading" @load="onload">
+      <div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+        <div class="item">111111</div>
+      </div>
+    </list>
   </div>
 </template>
 
 <script>
-  // import  noticeBar from '../node_modules/vant/packages/notice-bar'
-  // console.log(noticeBar)
+import List from "./list";
   export default {
+    components: {List},
+    data() {
+      return {
+        loading: false,
+      }
+    },
     methods: {
-      _href() {
-        console.log('--------------')
-        location.href = '../test2.html'
+      onload() {
+        console.log('-------loading-------')
       }
     }
   }
 </script>
 
-<style scoped lang="scss">
-div {
-  color: red;
+<style lang="scss">
+* {
+  margin: 0;
+  padding: 0
+}
+.item {
+  height: 80px;
+  font-size: 30px;
 }
 </style>
