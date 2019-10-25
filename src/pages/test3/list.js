@@ -1,3 +1,6 @@
+require('./list.scss');
+const Loading = require('./loading.gif')
+// const Test = require('./test.jpg')
 import { getScrollEventTarget } from './scroll'
 export default {
   name: 'c-list',
@@ -36,14 +39,14 @@ export default {
   },
   methods: {
     check() {
-      console.log(this.value)
+      console.log(this.value, this.finished)
       this.$nextTick(() => {
         if(this.value || this.finished) {
           return
         }
         const {$el: el, scroller, offset } = this;
         let scrollerRect;
-        // console.log(scroller)
+        console.log(scroller.getBoundingClientRect())
         if (scroller.getBoundingClientRect) {
           scrollerRect = scroller.getBoundingClientRect();
         } else {
@@ -74,6 +77,13 @@ export default {
     return (
       <div class="c-list">
         {this.$slots.default}
+        {
+          this.value && (
+            <div class="loading">
+              <img src={Loading} />加载中...
+            </div>
+          )
+        }
         <div ref="placeholder"></div>
       </div>
     )

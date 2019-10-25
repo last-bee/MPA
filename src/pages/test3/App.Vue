@@ -1,6 +1,6 @@
 <template>
   <div>
-    <list v-model="loading" @load="onload">
+    <list v-model="loading" :finished="finished" @load="onload" class="list">
       <div>
         <div class="item">111111</div>
         <div class="item">111111</div>
@@ -34,11 +34,15 @@ import List from "./list";
     data() {
       return {
         loading: false,
+        finished: false
       }
     },
     methods: {
       onload() {
-        console.log('-------loading-------')
+        setTimeout(() => {
+          this.loading = false
+          this.finished = true
+        }, 2000);
       }
     }
   }
@@ -52,5 +56,9 @@ import List from "./list";
 .item {
   height: 80px;
   font-size: 30px;
+}
+.list {
+  height: 100vh;
+  overflow: scroll;
 }
 </style>
